@@ -142,6 +142,9 @@ return array(
 				*/
 			),
 		),
+		'mobileDetect' => array(
+	        'class' => 'application.extensions.MobileDetect.MobileDetect'
+	    ),
 	),
 
 	// application-level parameters that can be accessed

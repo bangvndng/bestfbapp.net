@@ -42,16 +42,22 @@ user-scalable=yes, maximum-scale=2.0, minimum-scale=1.0, “>
 <?php } ?>
 
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 【SP】FB診断レクタングルバナー(へッダー) -->
-<ins class="adsbygoogle"
-     style="display:block;width:300px;height:250px;margin:0 auto;"
-     data-ad-client="ca-pub-5542247258727700"
-     data-ad-slot="9437892487"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<div style="margin:0 auto; width: 300px;">
 
+  <!-- i-mobile for PC client script -->
+  <script type="text/javascript">
+      imobile_pid = "27475"; 
+      imobile_asid = "208736"; 
+      imobile_width = 300; 
+      imobile_height = 250;
+  </script>
+  <script type="text/javascript" src="http://spdeliver.i-mobile.co.jp/script/ads.js?20101001"></script>
+
+</div>
+
+
+
+<?php /*
 <script type="text/javascript">
 var nend_params = {"media":14389,"site":67198,"spot":150460,"type":2,"oriented":1};
 </script>
@@ -61,40 +67,110 @@ var nend_params = {"media":14389,"site":67198,"spot":150460,"type":2,"oriented":
 var nend_params = {"media":14389,"site":67198,"spot":153545,"type":2,"oriented":1,"sp":0};
 </script>
 <script type="text/javascript" src="http://js1.nend.net/js/nendAdLoader.js"></script>
+*/ ?>
+
+<?php /*
+<div class="floating">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> 
+    <!-- 【SP】FB診断バナー(320×50) --> 
+    <ins class="adsbygoogle" style="display:inline-block;width:320px;height:50px" data-ad-client="ca-pub-5542247258727700" data-ad-slot="7289848089"></ins> 
+    <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+</div>
+*/ ?>
+
+<?php 
+//echo getcwd();
+
+/*
+include '/Mobile_Detect.php';
+$detect = new Mobile_Detect();
+
+// Check for any mobile device.
+if ($detect->isMobile()){
+  print_r("is mobile");
+}else{
+  print_r("is not mobile");
+}
+*/
+$detect = Yii::app()->mobileDetect;
+// call methods
+//$detect->isMobile();
+
+$isMobile = $detect->isMobile();
+
+?>
+
+<?php if($isMobile):?>
+  <style type="text/css">
+    .floating{
+      position: fixed;
+      bottom: 0px;
+      margin: 0 auto;
+      width: 100%;
+      z-index: 999;
+    }
+  </style>
+  <div class="floating">
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> 
+      <!-- 【SP】FB診断バナー(320×50) --> 
+      <ins class="adsbygoogle" style="display:block;width:320px;height:50px;margin: 0 auto;" data-ad-client="ca-pub-5542247258727700" data-ad-slot="7289848089"></ins> 
+      <script> (adsbygoogle = window.adsbygoogle || []).push({}); </script>
+  </div>
+<?php endif;?>
+
+  <script type="text/javascript">
+    $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() == $(document).height()) {
+        console.log("bottom");
+        $('.floating').attr('style','top:0px !important;');
+      }else{
+        console.log("moving up");
+        $('.floating').attr('style','bottom:0px !important;');
+      }
+    });
+  </script>
 
 </header>
 
 <?php echo $content; ?>
 
 <div class="recommend">
-<h1><img src="/assets/img/reco.png" alt="オススメ"></h1>
-<ul class=>
-<?php 
-$criteria = new CDbCriteria();
-$criteria->condition = 'is_publish = 1';
-$criteria->order = 'count_today,count_month, count DESC';
-$criteria->limit = 3;
-$recommend = Questions::model()->findAll($criteria); ?>
-<?php foreach ($recommend as $key => $item) { ?>
+  <h1><img src="/assets/img/reco.png" alt="オススメ"></h1>
+  <ul class=>
+  <?php 
+  $criteria = new CDbCriteria();
+  $criteria->condition = 'is_publish = 1';
+  $criteria->order = 'count_today,count_month, count DESC';
+  $criteria->limit = 3;
+  $recommend = Questions::model()->findAll($criteria); ?>
+  <?php foreach ($recommend as $key => $item) { ?>
 
-<li><a href="<?php echo $this->createUrl('/home/question',array('id' => $item->id)) ?>"><?php echo $item->title ?></a></li>
+  <li><a href="<?php echo $this->createUrl('/home/question',array('id' => $item->id)) ?>"><?php echo $item->title ?></a></li>
 
-<?php } ?>
+  <?php } ?>
 
-</ul>
+  </ul>
 </div>
 </div>
+  
+<?php if($isMobile):?>
+<script type="text/javascript">
+  var nend_params = {"media":14389,"site":67198,"spot":156550,"type":1,"oriented":1,"ad_num":4,"space":1,"align":1,"tdisplay":2,"tcolor":"%23000000","width":57,"height":57};
+</script>
+<script type="text/javascript" src="http://js1.nend.net/js/nendAdLoader.js"></script>
+<?php endif; ?>
+
 <footer>
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- 【SP】FB診断レクタングルバナー(フッター) -->
-<ins class="adsbygoogle"
-     style="display:inline-block;width:300px;height:250px"
-     data-ad-client="ca-pub-5542247258727700"
-     data-ad-slot="7961159289"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
+<!-- i-mobile for PC client script -->
+<script type="text/javascript">
+    imobile_pid = "27475"; 
+    imobile_asid = "208736"; 
+    imobile_width = 300; 
+    imobile_height = 250;
 </script>
+<script type="text/javascript" src="http://spdeliver.i-mobile.co.jp/script/ads.js?20101001"></script>
+
 
 <p><a href="<?php echo $this->createUrl('/privacy') ?>">プライバシーポリシーはこちら</a></p>
 <p><small>Copyright © ただいま診断中！おもしろアプリ All Rights Reserved.</small></p>
